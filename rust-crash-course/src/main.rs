@@ -1,7 +1,8 @@
 #![deny(clippy::all)]
 //#[derive(Debug)]
-
-
+//#[derive(PartialEq)] // to equate an enum with an instance of it
+// use std::collections::HashMap;
+// #[derive(Hash, Eq, PartialEq, Debug)]
 
 //const MY_AGE: u8 = 23;
 
@@ -61,6 +62,49 @@
 //     fn zero() -> Point {
 //         Point(0.0, 0.0, 0.0)
 //     }
+// }
+
+// enum AnimalType {
+//     Dog,
+//     Cat,
+//     Rabbit,
+// }
+
+// struct Size {
+//     width: f32,
+//     height: f32,
+// }
+
+// enum Shapes {
+//     Circle(f32, f32, f32),
+//     Rectangle { width: f64, height: f64 },
+//     Paralellogram(f32, f32, Size),
+// }
+
+// impl Shapes {
+//     fn area(&self) -> f32 {
+//         match self {
+//             Shapes::Paralellogram(x, y, size) => size.width * size.height,
+//             Shapes::Circle(x, y, radius) => 3.14 * radius * radius,
+//             _ => 1.0
+
+//         }
+//     }
+// }
+
+// enum Pet {
+//     Cat {name: String},
+//     Dog {name: String},
+// }
+
+// fn get_values() -> (String, String, i32) {
+//     ("hello".to_string(), "World".to_string(), 25)
+// }
+
+/////////////
+// struct Person {
+//     name: String,
+//     age: u8,
 // }
 
 fn main() {
@@ -162,4 +206,153 @@ fn main() {
     ////////////////////
     //let point = Point::zero();
     ////////////////////
+    // let fluffy = AnimalType::Cat;
+    // // if fluffy == AnimalType::Cat { //not efficient
+    // //     println!("It's a cat!");
+    // // }
+    // match fluffy {
+    //     AnimalType::Dog => println!("Woof!"),
+    //     // AnimalType::Cat => println!("Meow!"),
+    //     // AnimalType::Rabbit => println!("What's up doc!"),
+    //     _ => println!("Something else"),
+    // }
+    /////////////////
+    // let rectangle = Shapes::Rectangle {
+    //     width: 3.0,
+    //     height: 4.0,
+    // };
+
+    // if let Shapes::Rectangle { width, height } = rectangle {
+    //     println!("Width = {width}, height = {height}");
+    // }
+
+    // match rectangle {
+    //     Shapes::Rectangle { width, height } => {
+    //         println!("Width = {width}, height = {height}");
+    //     }
+    //     _ => println!("Not a rectangle"),
+    // }
+
+    // let paralellogram = Shapes::Paralellogram(
+    //     1.0,
+    //     2.0,
+    //     Size {
+    //         width: 3.0,
+    //         height: 4.0,
+    //     },
+    // );
+    // if let Shapes::Paralellogram(x, y, Size{width, height}) = paralellogram {
+    //     println!("{x} {y} {width} {height}")
+    // }
+    // match paralellogram {
+    //     Shapes::Paralellogram(x, y, Size{width, height}) => {
+    //         println!("A match with {x} {y} {width} {height}")
+    //     }
+    //     _ => println!("Not a match")
+    // }
+
+    // let area = paralellogram.area();
+    // println!("Area is {area}");
+    ///////////////////
+    // let fluffy = Pet::Cat{name: "Fluffy".to_string()};
+    // let name = match fluffy {
+    //     Pet::Cat {name} => name,
+    //     Pet::Dog {name} => name,
+    // };
+    // println!("{name}");
+    /////////////
+    // let values = ("Hello", "World", 30);
+    // let hello = values.0;
+    // let (hello1, world, age) = values;
+    // let (_, _, age1) = values;
+    // let (hello2, _, _) = get_values();
+    /////////////// VECTORSSS
+    // let values: [&str; 2] = ["foo", "bar"]; //fixed sized vector of string slices
+    // for value in values.iter() {
+    //     println!("{value}");
+    // }
+    // let foo1 = &values[0];
+    // println!("Foo is {foo1}");
+    // let length = values.len();
+    // println!("Length is {length}");
+    // //let values: [i32; 2] = [10, 20];
+    // //let doubles = values.iter().map(|x: &i32| x*2);
+    // let mut values = vec![100, 200]; //you can use an array directly
+    // values.push(300);
+    // //let threehnd = values.pop();
+    // println!("Values are {values:?}");
+    // //values.clear();
+    // values.extend_from_slice(&[400, 500]); //pushing a whole vector, basically
+    // println!("Values are {values:?}");
+    // let mut values2 = vec![4, 5, 6];
+    // values.append(&mut values2);
+    // println!("Values = {values:?}");
+    // println!("Values2 = {values2:?}");
+    // if values.contains(&200) {
+    //     println!("200 is contained");
+    // }
+    // else {
+    //     println!("200 is not contained");
+    // }
+    // if values.is_empty() {
+    //     println!("Values is empty");
+    // }
+    ////////////
+    // let mut values: HashMap<&str, &str> = HashMap::new();
+    // values.insert("foo", "bar");
+    // println!("{values:?}");
+    // if values.contains_key("name") {
+    //     println!("Name exists");
+    // } else {
+    //     println!("Name doesn't exist");
+    // }
+    // let bar = values["foo"];
+    // println!("Bar has {bar}");
+    // //values.remove("foo");
+    // //println!("{values:?}");
+    // match values.get("foo") {
+    //     Some(value) => println!("{value}"),
+    //     None => println!("Not found"),
+    // }
+    // for (&k, &v) in &values {
+    //     println!("{k} {v}");
+    // }
+    // let entry = values.entry("foo");
+    // match entry {
+    //     std::collections::hash_map::Entry::Occupied(value) => {
+    //         println!("{value:?}");
+    //     }
+    //     _ => {
+    //         println!("Noooot found");
+    //     }
+    // }
+    // values.insert("husband", "John Doe");
+    // values.entry("wife").or_insert("Jane Doe"); //if there's no name entry, create this one
+    // println!("{values:?}");
+    /////////////
+    //let mut values: HashMap<Person, &str> = HashMap::new();
+    /////////////
+    // let mut values = vec![1, 2, 3, 4, 5];
+    // values.push(6);
+    // for value in values.iter() {
+    //     println!("{value}");
+    // }
+    // let iter = values.iter();
+    // let sum1: i32 = iter.sum();
+    // println!("{sum1}");
+    // let values_d: Vec<i32> = values.iter().map(|v| v*2).collect();
+    // println!("{values_d:?}");
+
+    // let mut names = vec!["John", "Jane", "Tom"];
+    // names.push("Bro");
+    // for name in names.into_iter() {
+    //     if name.len() != 3 {
+    //         break;
+    //     }
+    //     println!("{name}");
+    // }
+    // for name in names.into_iter().filter(|name| name.len() == 3) {
+    //     println!("{name}");
+    // }
+
 }
