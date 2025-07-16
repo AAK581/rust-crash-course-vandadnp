@@ -87,7 +87,10 @@ fn main() {
             io::stdin().read_line(&mut priority).expect("Failed to read input");
             let priority = priority.trim();
             let priority = if priority.is_empty() { "None" } else { priority };
-
+            if !["High", "Medium", "Low", ""].contains(&priority) {
+                println!("Invalid priority!");
+                continue;
+            }
             todo_list.add_task(description.to_string(), priority.to_string());
         }
         else if choice == "2" {

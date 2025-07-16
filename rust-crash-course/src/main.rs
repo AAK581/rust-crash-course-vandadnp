@@ -1,5 +1,5 @@
 #![deny(clippy::all)]
-#[derive(Debug)]
+//#[derive(Debug)]
 
 
 
@@ -44,24 +44,24 @@
 //     let person = Person { name, age };
 // }
 
-struct Point(f64, f64, f64);
+// struct Point(f64, f64, f64);
 
-impl Point {
-    fn describe(&self) {
-        println!("x = {}, y = {}, z = {}", self.0, self.1, self.2);
-    }
-    fn twice(&self) -> Point {
-        Point(self.0 * 2.0, self.1 * 2.0, self.2 * 2.0)
-    }
-    fn make_twice(&mut self) {
-        self.0 *= 2.0;
-        self.1 *= 2.0;
-        self.2 *= 2.0;
-    }
-    fn zero() -> Point {
-        Point(0.0, 0.0, 0.0)
-    }
-}
+// impl Point {
+//     fn describe(&self) {
+//         println!("x = {}, y = {}, z = {}", self.0, self.1, self.2);
+//     }
+//     fn twice(&self) -> Point {
+//         Point(self.0 * 2.0, self.1 * 2.0, self.2 * 2.0)
+//     }
+//     fn make_twice(&mut self) {
+//         self.0 *= 2.0;
+//         self.1 *= 2.0;
+//         self.2 *= 2.0;
+//     }
+//     fn zero() -> Point {
+//         Point(0.0, 0.0, 0.0)
+//     }
+// }
 
 fn main() {
     // let mut name = "John";
@@ -160,5 +160,6 @@ fn main() {
     // let mut point = Point(1.0, 2.0, 3.0);
     // let twice = point.make_twice();
     ////////////////////
-    let point = Point::zero();
+    //let point = Point::zero();
+    ////////////////////
 }
