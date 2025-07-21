@@ -20,12 +20,7 @@ trait Account {
     fn balance(&mut self, acc_num: String) -> f64;
     fn new_account_list() -> BankAccountList;
     fn check_password(&mut self, password: String, account_number: &str) -> Result<String, String>;
-    fn add_account(
-        &mut self,
-        account_number: String,
-        holder_name: String,
-        password: String,
-    );
+    fn add_account(&mut self, account_number: String, holder_name: String, password: String);
 }
 
 impl Account for BankAccountList {
@@ -84,13 +79,12 @@ impl Account for BankAccountList {
         }
     }
 
-    fn check_password(&mut self, password: String, account_number: &str)  -> Result<String, String> {
+    fn check_password(&mut self, password: String, account_number: &str) -> Result<String, String> {
         for account in &mut self.accounts {
             if account.account_number == account_number {
                 if account.password == password {
                     return Ok("Authentication Successful".to_string());
-                }
-                else {
+                } else {
                     return Err("Authentication Failed".to_string());
                 }
             }
@@ -98,12 +92,7 @@ impl Account for BankAccountList {
         Err("Account not found".to_string())
     }
 
-    fn add_account(
-        &mut self,
-        account_number: String,
-        holder_name: String,
-        password: String,
-    ) {
+    fn add_account(&mut self, account_number: String, holder_name: String, password: String) {
         let account = BankAccount {
             account_number,
             holder_name,
@@ -182,7 +171,7 @@ fn main() {
                                 .expect("Failed to get client's password");
                             let password1 = password1.trim().to_string();
                             if password == password1 {
-                                    bank_account_list.add_account(
+                                bank_account_list.add_account(
                                     acc_num,
                                     full_name.to_string(),
                                     password,
