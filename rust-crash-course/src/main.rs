@@ -354,5 +354,54 @@ fn main() {
     // for name in names.into_iter().filter(|name| name.len() == 3) {
     //     println!("{name}");
     // }
+    ////////////////
+    // let value = Some(10);
+    // let name: Option<&str> = Some("John");
+    // let name: Option<&str> = None;
+    // //let unwrapped_name = name.expect("Name was not provided"); thread 'main' panicked at src\main.rs:361:31: Name was not provided
+    // //println!("Name is {unwrapped_name}");
+    // match name {
+    //     Some(name) => println!("Hello, {name}"),
+    //     None => println!("None, no name")
+    // }
+    // let mut age: Option<i8> = Some(20);
+    // match age.as_mut() {
+    //     Some(age) => *age += 1,
+    //     None => println!("No age")
+    // }
+    // println!("Age is {}", {age.unwrap()});
+    //////////////////
+    // let age1 = Some(20);
+    // let age2 = Some(20);
+    // let age3 = Some(20);
+    // if let (Some(age_1), Some(age_2), Some(age_3)) = (age1, age2, age3) {
+    //     println!("{}", age_1 + age_2 + age_3);
+    // }
 
+    // let name:Option<&str> = None;
+    // // let unwrapped: &str = name.unwrap_or("Doe");
+    // // println!("{unwrapped}");
+    // // let unwrapped: &str = name.unwrap_or_else(|| {
+    // //     "John"
+    // // });
+    // // println!("{unwrapped}");
+    // if name.is_some() {
+    //     println!("There is value in name");
+    // } else {
+    //     println!("There is no value in name");
+    // }
+
+    // if name.is_none() {
+    //     println!("There is still no value in name");
+    // } else {
+    //     println!("There is actually some value in name");
+    // }
+    //////////////////
+    // let age: Option<i32> = None;
+    // let age = age.unwrap_or_default();
+    // println!("{age}"); //prints 0 which is the default value for i32
+    let age: Option<i32> = Some(20);
+    let age_multiplied_by_2 = age.map(|age| age * 2);
+    println!("{}", age_multiplied_by_2.unwrap_or_default()); //40
+    //CHAPTER 9
 }
